@@ -54,7 +54,7 @@ module.exports = (env, argv = {}) => {
     output: {
       path: paths.build,
       filename: filenames.application,
-      publicPath: '/',
+      publicPath: '/text-layout/',
       chunkFilename: filenames.chunkFilename,
     },
     resolve: {
@@ -178,6 +178,7 @@ module.exports = (env, argv = {}) => {
       new webpack.DefinePlugin({
         'process.env': {
           DEVELOPMENT: mode === 'development',
+          PATH_PREFIX: JSON.stringify(mode === 'development' ? '' : '/text-layout'),
           NODE_ENV: JSON.stringify(mode),
         },
       }),
