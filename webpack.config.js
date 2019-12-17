@@ -13,7 +13,7 @@ const resolve = relativePath => path.resolve(APP_PATH, relativePath)
 
 const paths = {
   context: resolve('src'),
-  application: resolve('src/index.js'),
+  application: resolve('src/index.tsx'),
   build: resolve('build'),
   html: resolve('src/index.html'),
 }
@@ -59,7 +59,10 @@ module.exports = (env, argv = {}) => {
     },
     resolve: {
       modules: ['node_modules', paths.context],
-      extensions: ['*', '.js', '.css'],
+      extensions: ['*', '.tsx', '.ts', '.js', '.css'],
+      alias: {
+        src: path.resolve(__dirname, 'src/'),
+      },
     },
     module: {
       rules: [
@@ -84,7 +87,13 @@ module.exports = (env, argv = {}) => {
           },
         },
         {
-          test: /\.css$/,
+          test: /\.(ts|tsx)?$/,
+          use: 'ts-loader',
+          exclude: /node_modules/,
+          include: [paths.context],
+        },
+        {
+          test: /(min)?\.css$/,
           include: [paths.context],
           use: [
             mode === 'development'

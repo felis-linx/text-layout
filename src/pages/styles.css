@@ -1,0 +1,19 @@
+.disabled-link {
+  pointer-events: none;
+}
+
+.icon-shift {
+  position: relative;
+
+  &.left {
+    left: -7px;
+  }
+
+  &.right {
+    right: -7px;
+  }
+}
+
+.text-column {
+  white-space: pre;
+}

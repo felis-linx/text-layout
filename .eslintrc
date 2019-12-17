@@ -18,8 +18,9 @@
   ],
   "plugins": [
     "react",
+    "react-hooks",
     "import",
-    "prettier",
+    "prettier"
   ],
   "env": {
     "browser": true,
@@ -30,6 +31,9 @@
     "import/resolver": {
       "webpack": {
         "config": "./webpack.config.js"
+      },
+      "node": {
+        "extensions": [".js", ".jsx", '.json', '.ts', '.tsx']
       }
     },
   },
@@ -64,6 +68,8 @@
     ],
     "semi": [ "error", "never" ],
     "react/jsx-filename-extension": 0,
-    "react/jsx-one-expression-per-line": ["off"]
+    "react/jsx-one-expression-per-line": ["off"],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   }
 }
